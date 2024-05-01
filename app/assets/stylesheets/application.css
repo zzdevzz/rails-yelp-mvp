@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+ .restaurant img {
+  object-fit: cover;
+  width: 250px;
+  height: 100%;
+ }
+
+ .restaurant {
+  height: 300px
+ }
+
+ .restaurant > * {
+  margin :0 20px;
+ }
+
+ .container a{
+  text-decoration: none;
+  color: black;
+ }
