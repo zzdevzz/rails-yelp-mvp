@@ -2,16 +2,21 @@
   <h1> Welcome to <%= @restaurant.name %>! </h1>
 
   <p class="text-bold">About this restaurant: Serving <%= @restaurant.category %></p>
-  <div>
-    <%= link_to("Back to all Restaurants", restaurants_path, class: "btn btn-info mr-3") %>
-    <%= link_to("New Review", new_restaurant_review_path(@restaurant), class: "btn btn-info mr-3") %>
-  </div>
+  <%= link_to("Back to all Restaurants", restaurants_path, class: "btn btn-info mr-3") %>
+
   <h3 class="mt-5"> Reviews </h3>
   <% @reviews.each do |review| %>
     <div class="card my-3 p-4">
       <p><%= '⭐' * review.rating %></p>
       <p><%= review.content %></p>
     </div>
+  <% end %>
+
+  <h1>Submit a review for <%= @restaurant.name %></h1>
+  <%= simple_form_for([@restaurant,@review]) do |f| %>
+    <%= f.input :rating, input_html: { min: 0, max: 5 }%>
+    <%= f.input :content %>
+    <%= f.submit class: "btn btn-info mr-3"%>
   <% end %>
 
 </div>

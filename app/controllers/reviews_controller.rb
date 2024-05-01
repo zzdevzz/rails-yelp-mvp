@@ -1,19 +1,11 @@
 class ReviewsController < ApplicationController
-  def new
-    @review = Review.new
-    @restaurant = Restaurant.find(params[:restaurant_id])
-  end
-
   def create
     @review = Review.new(reviews_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review.restaurant = @restaurant
-    if @review.valid?
-      @review.save
-      redirect_to restaurant_path(@restaurant)
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @review.save if @review.valid?
+    redirect_to restaurant_path(@restaurant)
+    # render :new, status: :unprocessable_entity
   end
 
   private
@@ -22,3 +14,4 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:rating, :content)
   end
 end
+ra

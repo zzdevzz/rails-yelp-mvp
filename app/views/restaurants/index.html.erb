@@ -1,15 +1,16 @@
 <div class="container">
   <h1 class="m-5"> All Restaurants next to you </h1>
-
-  <% @restaurants.each do |restaurant| %>
-    <%= link_to(restaurant_path(restaurant)) do %>
-      <div class="card p-4 my-3 restaurant d-flex flex-row align-items-center">
-        <img src= <%= "https://source.unsplash.com/random/?#{restaurant.category}&food" %>>
-        <div>
-          <h2> <%= restaurant.name %> </h2>
-          <p> <%= restaurant.category.capitalize %> cuisine  </p>
+  <div class="row gap-2">
+    <% @restaurants.each do |restaurant| %>
+      <%= link_to(restaurant_path(restaurant), class: "card p-4 col-md-5 col-12") do %>
+        <div class="d-flex flex-row align-items-center restaurant">
+          <img src= <%= "https://source.unsplash.com/random/?#{restaurant.category}&food" %>>
+          <div>
+            <h2> <%= restaurant.name %> </h2>
+            <p> <%= restaurant.category.capitalize %> cuisine  </p>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
